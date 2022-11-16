@@ -58,7 +58,8 @@
 			const generate4 = document.getElementById('generate4').innerHTML = parseInt(rand());
 
 			document.getElementById('rata').innerHTML=rata(generate1,generate2,generate3,generate4);
-			
+			console.log("rata:" + rata(generate1,generate2,generate3,generate4));
+
 			const generate11 = generate1 - rata(generate1,generate2,generate3,generate4);
 			const generate12 = generate2 - rata(generate1,generate2,generate3,generate4);
 			const generate13 = generate3 - rata(generate1,generate2,generate3,generate4);
@@ -68,11 +69,16 @@
 			const generate22 = Math.pow(generate12, 2);
 			const generate23 = Math.pow(generate13, 2);
 			const generate24 = Math.pow(generate14, 2);
+			console.log("nilai:"+generate21);
+			console.log("nilai:"+generate22);
+			console.log("nilai:"+generate23);
+			console.log("nilai:"+generate24);
 
 			const jumlahSD = generate21+generate22+generate23+generate24;
+			console.log("jumlahSD:"+jumlahSD);
 
-			document.getElementById('sd').innerHTML= jumlahSD/(4-1);	
-			document.getElementById('bulatanSD').innerHTML= parseInt(jumlahSD/(4-1));	
+			document.getElementById('sd').innerHTML= Math.sqrt(jumlahSD/(4-1));	
+			document.getElementById('bulatanSD').innerHTML= parseInt(Math.sqrt(jumlahSD/(4-1)));	
 		}
 	</script>
 </body>
