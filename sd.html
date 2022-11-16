@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma-rtl.min.css">
+</head>
+<body>
+	<section class="hero is-fullheight">
+		<!-- Hero head: will stick at the top -->
+		
+	  
+		<!-- Hero content: will be in the middle -->
+		<div class="hero-body">
+		  <div class="container has-text-centered" id="selected">
+			<p class="subtitle">
+			  Hasil Penilaian Dewan Juri dari Setiap Peserta Lomba Ceramah Digital
+			</p>
+			<p class="subtitle">Dari Penguasaan Materi, Penyampaian, Penampilan dan Kejernihan Video dan Audio</p>
+			<button class="button" onclick="generate()">Generate</button>
+			<br><br>
+			<p id="generate1"></p>
+			<p id="generate2"></p>
+			<p id="generate3"></p>
+			<p id="generate4"></p>
+			<br>
+			<p>Rata-rata</p>
+			<p id="rata"></p>
+			<p>Standar Deviasi</p>
+			<p id="sd"></p>
+			<p>Bulatan Nilai Standar Deviasi</p>
+			<p id="bulatanSD"></p>
+
+
+
+		  </div>
+		</div>
+	  
+		<!-- Hero footer: will stick at the bottom -->
+		
+	  </section>
+	<script>
+		generate();
+		function rand(){
+			return Math.random() * (100 - 0) + 0;
+		}
+		function rata(a,b,c,d){
+			const sigma = a+b+c+d;
+			const rata = sigma/4;
+			return parseInt(rata);
+		}
+		function generate(){
+			const generate1 = document.getElementById('generate1').innerHTML = parseInt(rand());
+			const generate2 = document.getElementById('generate2').innerHTML = parseInt(rand());
+			const generate3 = document.getElementById('generate3').innerHTML = parseInt(rand());
+			const generate4 = document.getElementById('generate4').innerHTML = parseInt(rand());
+
+			document.getElementById('rata').innerHTML=rata(generate1,generate2,generate3,generate4);
+			
+			const generate11 = generate1 - rata(generate1,generate2,generate3,generate4);
+			const generate12 = generate2 - rata(generate1,generate2,generate3,generate4);
+			const generate13 = generate3 - rata(generate1,generate2,generate3,generate4);
+			const generate14 = generate4 - rata(generate1,generate2,generate3,generate4);
+
+			const generate21 = Math.pow(generate11, 2);
+			const generate22 = Math.pow(generate12, 2);
+			const generate23 = Math.pow(generate13, 2);
+			const generate24 = Math.pow(generate14, 2);
+
+			const jumlahSD = generate21+generate22+generate23+generate24;
+
+			document.getElementById('sd').innerHTML= jumlahSD/(4-1);	
+			document.getElementById('bulatanSD').innerHTML= parseInt(jumlahSD/(4-1));	
+		}
+	</script>
+</body>
+</html>
